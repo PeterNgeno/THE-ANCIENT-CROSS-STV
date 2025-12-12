@@ -1,118 +1,171 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lyrics — THE ANCIENT CROSS STv</title>
-  <style>
-    :root{--accent:#f2c94c;--bg:#003366;--muted:#d0d7e4}
-    body{margin:0;font-family:Inter,system-ui;color:#fff;background:var(--bg)}
-    .wrap{max-width:900px;margin:28px auto;padding:18px}
-    .card{background:rgba(255,255,255,0.03);padding:18px;border-radius:10px}
-    h1{margin:0 0 8px}
-    .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
-    pre.lyrics{white-space:pre-wrap;background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;color:#fff}
-    .small{color:var(--muted);font-size:13px}
-    a.btn{display:inline-block;background:var(--accent);color:#003366;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700;margin-top:8px}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lyrics Library — THE ANCIENT CROSS STv</title>
+
+<style>
+body{
+  margin:0;
+  font-family: "Georgia", serif;
+  background:#ececec;
+}
+
+.header{
+  background:#003366;
+  padding:20px;
+  color:white;
+  text-align:center;
+  font-size:26px;
+  font-weight:700;
+}
+
+.container{
+  max-width:900px;
+  margin:30px auto;
+  background:white;
+  padding:28px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Magazine style title */
+h1{
+  font-size:34px;
+  font-family: "Merriweather", serif;
+  margin-bottom:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.meta{
+  color:#666;
+  font-size:14px;
+  margin-bottom:20px;
+  border-left:4px solid #003366;
+  padding-left:8px;
+}
+
+/* Magazine paragraph style */
+.lyrics{
+  white-space:pre-wrap;
+  line-height:1.7;
+  font-size:18px;
+  margin-top:25px;
+}
+
+/* Embedded video */
+.video-box{
+  margin-top:30px;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
+.video-box iframe{
+  width:100%;
+  height:380px;
+  border:0;
+}
+
+.back{
+  display:inline-block;
+  margin-top:25px;
+  padding:10px 20px;
+  background:#003366;
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
+
 </head>
 <body>
-  <div class="wrap">
-    <div class="card" id="contentCard">
-      <h1 id="title">Loading…</h1>
-      <div class="meta" id="meta">Please wait while we load the lyric.</div>
-      <pre class="lyrics" id="lyricText"> </pre>
-      <div id="extra" style="margin-top:12px"></div>
-      <div style="margin-top:12px" class="small">Sourced from Google Sheet — THE ANCIENT CROSS STv</div>
-    </div>
-  </div>
 
-  <script>
-    // CONFIG: put your sheet ID here
-    const SHEET_ID = '189anRncn21sY8mBEgLpiJQqUQ-X02SEQW_zywHrBugM';
-    const SHEET_NAME = 'Sheet1';
+<div class="header">THE ANCIENT CROSS STv — LYRICS</div>
 
-    // helper to get ?id= from url
-    function getParam(name){
-      const url = new URL(window.location.href);
-      return url.searchParams.get(name);
+<div class="container" id="content">
+  <p>Loading...</p>
+</div>
+
+<script>
+// GOOGLE SHEET PUBLIC FEED
+const SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/189anRncn21sY8mBEgLpiJQqUQ-X02SEQW_zywHrBugM/gviz/tq?tqx=out:json";
+
+function getQueryId(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
+}
+
+fetch(SHEET_URL)
+  .then(res => res.text())
+  .then(text => {
+    const json = JSON.parse(text.substr(47).slice(0,-2));
+    const rows = json.table.rows;
+
+    const id = getQueryId();
+
+    if(!id){
+      // Show all songs list
+      let html = `<h1>Lyrics Library</h1><p class="meta">Choose a song below:</p><ul>`;
+      rows.forEach(r=>{
+        const sid = r.c[0]?.v;
+        const title = r.c[1]?.v;
+        if(sid && title){
+          html += `<li><a href="lyrics.html?id=${sid}">${title}</a></li>`;
+        }
+      });
+      html += "</ul>";
+      document.getElementById("content").innerHTML = html;
+      return;
     }
 
-    // fetch gviz JSON and return parsed rows
-    async function fetchSheetJson(){
-      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
-      const res = await fetch(url);
-      const text = await res.text();
-      // Google returns some padding before JSON; extract the JSON object
-      const jsonText = text.substring(text.indexOf('{'), text.lastIndexOf('}')+1);
-      const obj = JSON.parse(jsonText);
-      // columns
-      const cols = obj.table.cols.map(c => (c.label || '').trim());
-      // rows -> array of arrays
-      const rows = obj.table.rows.map(r => r.c.map(cell => cell ? cell.v : ''));
-      return {cols, rows};
+    // Show single page
+    const song = rows.find(r => r.c[0]?.v == id);
+    if(!song){
+      document.getElementById("content").innerHTML = "<p>Song not found.</p>";
+      return;
     }
 
-    async function render(){
-      const idParam = parseInt(getParam('id') || '1', 10);
+    const title = song.c[1]?.v || "Untitled Song";
+    const lyrics = song.c[2]?.v || "No lyrics.";
+    const youtube = song.c[3]?.v || "";
+
+    // Extract video ID
+    let videoId = "";
+    if(youtube.includes("youtube.com") || youtube.includes("youtu.be")){
       try{
-        const sheet = await fetchSheetJson();
-        const cols = sheet.cols;
-        const rows = sheet.rows;
-        if (rows.length === 0){
-          document.getElementById('title').textContent = 'No lyrics found in the sheet';
-          document.getElementById('lyricText').textContent = '';
-          return;
-        }
-        // idParam is 1-based; rows array is 0-based
-        const index = Math.max(0, Math.min(rows.length-1, idParam-1));
-        const row = rows[index];
-        // Build title: prefer first column if present
-        const title = (row[0] && row[0].toString().trim()) || `Lyric #${idParam}`;
-        document.getElementById('title').textContent = title;
-
-        // Build content: attempt to find a column named 'Lyrics' or 'Content' or show joined remaining columns
-        const colLower = cols.map(c => c.toLowerCase());
-        let content = '';
-        // Search for 'lyrics' or 'content' column
-        const idxLyrics = colLower.indexOf('lyrics') !== -1 ? colLower.indexOf('lyrics') :
-                          (colLower.indexOf('content') !== -1 ? colLower.indexOf('content') : -1);
-        if (idxLyrics !== -1 && row[idxLyrics]){
-          content = row[idxLyrics];
+        if(youtube.includes("youtu.be")){
+          videoId = youtube.split("/").pop().split("?")[0];
         } else {
-          // fallback: join columns 1..end as content
-          const parts = [];
-          for (let i=1;i<row.length;i++){
-            if (row[i]) parts.push((cols[i] ? (cols[i]+': ') : '') + row[i]);
-          }
-          content = parts.join('\n\n') || 'No content available for this row.';
+          videoId = new URL(youtube).searchParams.get("v");
         }
-        document.getElementById('lyricText').textContent = content;
-
-        // meta: show row number and available columns
-        document.getElementById('meta').textContent = `Row ${index+1} of ${rows.length} — Columns: ${cols.join(', ')}`;
-
-        // extra: if there's a youtube link column, show a listen button
-        const youtubeColIndex = colLower.findIndex(c => c.includes('youtube') || c.includes('link') || c.includes('video'));
-        const extraDiv = document.getElementById('extra');
-        extraDiv.innerHTML = '';
-        if (youtubeColIndex !== -1 && row[youtubeColIndex]){
-          const a = document.createElement('a');
-          a.href = row[youtubeColIndex];
-          a.target = '_blank';
-          a.className = 'btn';
-          a.textContent = 'Listen on YouTube';
-          extraDiv.appendChild(a);
-        }
-      } catch(err){
-        console.error(err);
-        document.getElementById('title').textContent = 'Error loading sheet';
-        document.getElementById('lyricText').textContent = 'Could not load the Google Sheet. Make sure the sheet is published and visible to anyone with the link.';
-      }
+      }catch(e){}
     }
 
-    // run
-    render();
-  </script>
+    let html = `
+      <h1>${title}</h1>
+      <div class="meta">Worship Media — THE ANCIENT CROSS STv</div>
+
+      <div class="lyrics">${lyrics}</div>
+    `;
+
+    if(videoId){
+      html += `
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+        </div>
+      `;
+    }
+
+    html += `<a class="back" href="lyrics.html">← Back to all lyrics</a>`;
+
+    document.getElementById("content").innerHTML = html;
+  });
+</script>
+
 </body>
 </html>
