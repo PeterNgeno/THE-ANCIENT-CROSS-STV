@@ -131,20 +131,21 @@
     .small{font-size:14px;color:var(--muted)}
 
     /* LINKS */
+    a.link{
+      color: #f2c94c;  /* visible against dark background */
+      text-decoration: none;
+      transition: color 0.2s, text-decoration 0.2s;
+    }
+    a.link:hover{
+      color: #fff;
+      text-decoration: underline;
+    }
+
     ul.link-list{
       padding-left:20px;
     }
     ul.link-list li{
       margin-bottom:6px;
-    }
-    ul.link-list li a{
-      color: #f2c94c;  /* visible against dark background */
-      text-decoration: none;
-      transition: color 0.2s, text-decoration 0.2s;
-    }
-    ul.link-list li a:hover{
-      color: #fff;  /* brighter on hover */
-      text-decoration: underline;
     }
 
     footer{
@@ -192,9 +193,9 @@
         <div style="margin-top:12px" class="small">
           <strong>Other videos:</strong>
           <ul class="link-list">
-            <li><a href="https://youtu.be/uan22HKjbo8?si=V4RDj3tK4mdLlaKQ" target="_blank">Use My Life For Your Name</a></li>
-            <li><a href="https://youtu.be/HubSguLmuL4?si=9yAuj0Sl13Ud4GJP" target="_blank">The Last Light - Dream</a></li>
-            <li><a href="https://youtu.be/yjzQMLk5x3Q?si=psKJQC5cmtzNC0vr" target="_blank">Jesu Be Lifted Up (multi-language)</a></li>
+            <li><a class="link" href="https://youtu.be/uan22HKjbo8?si=V4RDj3tK4mdLlaKQ" target="_blank">Use My Life For Your Name</a></li>
+            <li><a class="link" href="https://youtu.be/HubSguLmuL4?si=9yAuj0Sl13Ud4GJP" target="_blank">The Last Light - Dream</a></li>
+            <li><a class="link" href="https://youtu.be/yjzQMLk5x3Q?si=psKJQC5cmtzNC0vr" target="_blank">Jesu Be Lifted Up (multi-language)</a></li>
           </ul>
         </div>
 
@@ -216,7 +217,7 @@
         <div class="card" style="margin-top:16px">
           <h3>Quick access</h3>
           <ul style="padding-left:20px">
-            <li class="small"><a href="lyrics.html">Open Lyrics & Messages</a></li>
+            <li class="small"><a class="link" href="lyrics.html">Open Lyrics & Messages</a></li>
           </ul>
         </div>
 
@@ -229,4 +230,4 @@
 
   </div>
 </body>
-</html>
+            </html>
