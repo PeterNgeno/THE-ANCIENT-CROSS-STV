@@ -5,53 +5,129 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>THE ANCIENT CROSS STv — Worship Media & Donations</title>
   <meta name="description" content="THE ANCIENT CROSS STv — prophetic worship songs, lyrics and encouragements" />
+
   <style>
     :root{
-      --accent:#f2c94c; --bg:#003366; --muted:#d0d7e4;
+      --accent:#f2c94c; 
+      --bg:#003366; 
+      --muted:#d0d7e4;
     }
+
     *{box-sizing:border-box}
+
     body{
-      margin:0;font-family:Inter,system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-      background:var(--bg); color:#fff; line-height:1.45;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;
+      background:var(--bg);
+      color:#fff;
+      line-height:1.45;
     }
-    .container{max-width:1100px;margin:24px auto;padding:18px}
-    header{display:flex;align-items:center;gap:16px}
-    .logo img{width:84px;height:84px;border-radius:12px;object-fit:cover;border:2px solid rgba(255,255,255,0.06)}
+
+    .container{
+      max-width:1100px;
+      margin:24px auto;
+      padding:18px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .logo img{
+      width:84px;
+      height:84px;
+      border-radius:12px;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,0.06);
+    }
+
     h1{margin:0;font-size:24px}
     p.lead{color:var(--muted);margin:6px 0 12px}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:900px){.grid{grid-template-columns:680px 1fr}}
-    .card{background:rgba(255,255,255,0.04);padding:16px;border-radius:10px}
-    .video{position:relative;padding-top:56.25%;border-radius:8px;overflow:hidden}
-    .video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-    .btn{display:inline-block;background:var(--accent);color:#003366;padding:10px 14px;border-radius:8px;font-weight:700;text-decoration:none}
-    .btn-secondary{display:inline-block;background:transparent;border:2px solid var(--accent);color:var(--accent);padding:10px 14px;border-radius:8px;font-weight:700;text-decoration:none;margin-left:8px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    @media(min-width:900px){
+      .grid{grid-template-columns:680px 1fr}
+    }
+
+    .card{
+      background:rgba(255,255,255,0.04);
+      padding:16px;
+      border-radius:10px;
+    }
+
+    .video{
+      position:relative;
+      padding-top:56.25%;
+      border-radius:8px;
+      overflow:hidden;
+    }
+    .video iframe{
+      position:absolute;top:0;left:0;width:100%;height:100%;border:0;
+    }
+
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:#003366;
+      padding:10px 14px;
+      border-radius:8px;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .btn-secondary{
+      display:inline-block;
+      background:transparent;
+      border:2px solid var(--accent);
+      color:var(--accent);
+      padding:10px 14px;
+      border-radius:8px;
+      font-weight:700;
+      text-decoration:none;
+      margin-left:8px;
+    }
+
     .small{font-size:13px;color:var(--muted)}
     ul.link-list{padding-left:18px;color:var(--muted)}
-    .lyrics-links{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
-    @media(max-width:620px){.lyrics-links{grid-template-columns:1fr}}
+
   </style>
 </head>
+
 <body>
   <div class="container">
+
+    <!-- HEADER -->
     <header>
-      <div class="logo"><img src="THE_ANCIENT_CROSS_STV_logo.png" alt="THE ANCIENT CROSS STv logo"></div>
+      <div class="logo">
+        <img src="cross.png" alt="THE ANCIENT CROSS STv Logo">
+      </div>
+
       <div>
         <h1>THE ANCIENT CROSS STv</h1>
         <p class="lead">Official Worship MEDIA Channel — Prophetic Songs, Lyrics & Encouragement texts.</p>
+
         <div style="margin-top:6px">
           <a class="btn" href="https://www.youtube.com/@theancientcrossTV" target="_blank">YouTube Channel</a>
 
-          <!-- ⭐ NEW BUTTON ADDED ⭐ -->
+          <!-- NEW BUTTON (Lyrics & Messages) -->
           <a class="btn-secondary" href="lyrics.html" target="_self">Lyrics & Messages</a>
         </div>
       </div>
     </header>
 
+    <!-- MAIN GRID -->
     <main class="grid" style="margin-top:16px">
+
+      <!-- LEFT SIDE -->
       <section class="card">
+
         <div class="video">
-          <!-- main embed: The Last Light -->
           <iframe src="https://www.youtube.com/embed/lXq20zzVdAM" allowfullscreen></iframe>
         </div>
 
@@ -67,22 +143,16 @@
           </ul>
         </div>
 
-        <hr style="border:0;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0" />
-
-        <h3>Lyrics & Encouragement pages</h3>
-        <p class="small">This site reads lyrics and encouragement texts from a Google Sheet. Use the links below to open each lyric page.</p>
-
-        <div class="lyrics-links" id="lyricsLinks">
-          <!-- JS will populate 50 links: lyrics.html?id=1 ... id=50 -->
-        </div>
       </section>
 
+      <!-- RIGHT SIDE -->
       <aside>
         <div class="card">
           <h3>Support the media</h3>
           <p class="small">Support recordings, streaming equipment & media production.</p>
           <p class="small"><strong>M-Pesa Paybill:</strong> <span style="color:var(--accent)">REPLACE_PAYBILL</span></p>
           <p class="small"><strong>Account:</strong> THEANCIENTCROSS</p>
+
           <div style="margin-top:8px">
             <a class="btn" href="#donate">Donate</a>
           </div>
@@ -91,36 +161,17 @@
         <div class="card" style="margin-top:12px">
           <h3>Quick access</h3>
           <ul style="padding-left:18px">
-            <li class="small"><a href="lyrics.html?id=1" style="color:var(--muted)">Sample lyric page (id=1)</a></li>
-            <li class="small"><a href="lyrics.html?id=2" style="color:var(--muted)">Sample lyric page (id=2)</a></li>
-            <li class="small"><a href="lyrics.html?id=3" style="color:var(--muted)">Sample lyric page (id=3)</a></li>
+            <li class="small"><a href="lyrics.html" style="color:var(--muted)">Open Lyrics & Messages</a></li>
           </ul>
         </div>
+
       </aside>
     </main>
 
     <footer style="margin-top:18px;text-align:center;color:var(--muted)">
       © 2025 THE ANCIENT CROSS STv — Worship Media
     </footer>
-  </div>
 
-  <script>
-    // generate 50 links to the lyrics template
-    const container = document.getElementById('lyricsLinks');
-    for (let i=1;i<=50;i++){
-      const a = document.createElement('a');
-      a.href = `lyrics.html?id=${i}`;
-      a.target = '_self';
-      a.style.display = 'block';
-      a.style.padding = '8px';
-      a.style.borderRadius = '6px';
-      a.style.background = 'rgba(255,255,255,0.02)';
-      a.style.color = 'var(--muted)';
-      a.style.textDecoration = 'none';
-      a.style.fontSize = '13px';
-      a.textContent = `Lyric / Message #${i}`;
-      container.appendChild(a);
-    }
-  </script>
+  </div>
 </body>
 </html>
