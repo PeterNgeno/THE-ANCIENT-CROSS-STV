@@ -1,113 +1,122 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>THE ANCIENT CROSS STv — Worship Media & Donations</title>
-
-<style>
-:root{--accent:#f2c94c;--bg:#003366;--card:#0f1724;--muted:#d0d7e4;color-scheme:dark}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,system-ui;
-  background:#003366; /* BLUE BACKGROUND */
-  color:white;
-  line-height:1.5;
-}
-.container{max-width:1024px;margin:28px auto;padding:20px}
-
-header{display:flex;align-items:center;gap:16px}
-.logo img{width:72px;height:72px;border-radius:12px;object-fit:cover}
-
-h1{margin:0;font-size:24px}
-p.lead{color:#d0d7e4;margin:6px 0 18px}
-
-.grid{display:grid;grid-template-columns:1fr;gap:18px}
-@media(min-width:860px){.grid{grid-template-columns:480px 1fr}}
-
-.card{
-  background:rgba(255,255,255,0.08);
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.4);
-}
-
-.video{position:relative;padding-top:56.25%;border-radius:8px;overflow:hidden}
-.video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-
-.btn{
-  display:inline-block;
-  background:var(--accent);
-  color:#003366;
-  padding:10px 16px;
-  border-radius:8px;
-  font-weight:700;
-  text-decoration:none;
-}
-.small{font-size:13px;color:#d0d7e4}
-
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>THE ANCIENT CROSS STv — Worship Media & Donations</title>
+  <meta name="description" content="THE ANCIENT CROSS STv — prophetic worship songs, lyrics and encouragements" />
+  <style>
+    :root{
+      --accent:#f2c94c; --bg:#003366; --muted:#d0d7e4;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Inter,system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      background:var(--bg); color:#fff; line-height:1.45;
+    }
+    .container{max-width:1100px;margin:24px auto;padding:18px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo img{width:84px;height:84px;border-radius:12px;object-fit:cover;border:2px solid rgba(255,255,255,0.06)}
+    h1{margin:0;font-size:24px}
+    p.lead{color:var(--muted);margin:6px 0 12px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.grid{grid-template-columns:680px 1fr}}
+    .card{background:rgba(255,255,255,0.04);padding:16px;border-radius:10px}
+    .video{position:relative;padding-top:56.25%;border-radius:8px;overflow:hidden}
+    .video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+    .btn{display:inline-block;background:var(--accent);color:#003366;padding:10px 14px;border-radius:8px;font-weight:700;text-decoration:none}
+    .small{font-size:13px;color:var(--muted)}
+    ul.link-list{padding-left:18px;color:var(--muted)}
+    .lyrics-links{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+    @media(max-width:620px){.lyrics-links{grid-template-columns:1fr}}
+  </style>
 </head>
-
 <body>
-<div class="container">
+  <div class="container">
+    <header>
+      <div class="logo"><img src="THE_ANCIENT_CROSS_STV_logo.png" alt="THE ANCIENT CROSS STv logo"></div>
+      <div>
+        <h1>THE ANCIENT CROSS STv</h1>
+        <p class="lead">Official Worship MEDIA Channel — Prophetic Songs, Lyrics & Encouragement texts.</p>
+        <div style="margin-top:6px">
+          <a class="btn" href="https://www.youtube.com/@theancientcrossTV" target="_blank">YouTube Channel</a>
+        </div>
+      </div>
+    </header>
 
-<header>
-  <div class="logo">
-    <img src="file_000000002a6461f5969df67b3b3477e9.png" alt="THE ANCIENT CROSS STV Logo">
+    <main class="grid" style="margin-top:16px">
+      <section class="card">
+        <div class="video">
+          <!-- main embed: The Last Light -->
+          <iframe src="https://www.youtube.com/embed/lXq20zzVdAM" allowfullscreen></iframe>
+        </div>
+
+        <h2 style="margin-top:12px">Featured: THE LAST LIGHT</h2>
+        <p class="small">A prophetic worship message calling the church to repentance and readiness. Please like, share and subscribe.</p>
+
+        <div style="margin-top:10px" class="small">
+          <strong>Other videos:</strong>
+          <ul class="link-list">
+            <li><a href="https://youtu.be/uan22HKjbo8?si=V4RDj3tK4mdLlaKQ" target="_blank" style="color:var(--muted)">Use My Life For Your Name</a></li>
+            <li><a href="https://youtu.be/HubSguLmuL4?si=9yAuj0Sl13Ud4GJP" target="_blank" style="color:var(--muted)">The Last Light - Dream</a></li>
+            <li><a href="https://youtu.be/yjzQMLk5x3Q?si=psKJQC5cmtzNC0vr" target="_blank" style="color:var(--muted)">Jesu Be Lifted Up (multi-language)</a></li>
+          </ul>
+        </div>
+
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0" />
+
+        <h3>Lyrics & Encouragement pages</h3>
+        <p class="small">This site reads lyrics and encouragement texts from a Google Sheet. Use the links below to open each lyric page.</p>
+
+        <div class="lyrics-links" id="lyricsLinks">
+          <!-- JS will populate 50 links: lyrics.html?id=1 ... id=50 -->
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3>Support the media</h3>
+          <p class="small">Support recordings, streaming equipment & media production.</p>
+          <p class="small"><strong>M-Pesa Paybill:</strong> <span style="color:var(--accent)">REPLACE_PAYBILL</span></p>
+          <p class="small"><strong>Account:</strong> THEANCIENTCROSS</p>
+          <div style="margin-top:8px">
+            <a class="btn" href="#donate">Donate</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Quick access</h3>
+          <ul style="padding-left:18px">
+            <li class="small"><a href="lyrics.html?id=1" style="color:var(--muted)">Sample lyric page (id=1)</a></li>
+            <li class="small"><a href="lyrics.html?id=2" style="color:var(--muted)">Sample lyric page (id=2)</a></li>
+            <li class="small"><a href="lyrics.html?id=3" style="color:var(--muted)">Sample lyric page (id=3)</a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer style="margin-top:18px;text-align:center;color:var(--muted)">
+      © 2025 THE ANCIENT CROSS STv — Worship Media
+    </footer>
   </div>
-  <div>
-    <h1>THE ANCIENT CROSS STv</h1>
-    <p class="lead">Official Worship MEDIA Channel — Prophetic Songs, Dreams & Messages</p>
-  </div>
-</header>
 
-<main class="grid">
-
-<!-- MAIN VIDEO CARD -->
-<section class="card">
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/lXq20zzVdAM" allowfullscreen></iframe>
-  </div>
-
-  <h2>The Last Light — Main Song</h2>
-  <p class="small">Watch, like, share & subscribe on YouTube.</p>
-
-  <a class="btn" target="_blank"
-     href="https://www.youtube.com/@theancientcrossTV">Visit Channel</a>
-</section>
-
-<!-- SIDE PANEL -->
-<aside>
-
-<div class="card">
-  <h3>Songs (Quick Links)</h3>
-  <ul style="color:#d0d7e4; padding-left:20px">
-    <li><a class="small" target="_blank" href="https://youtu.be/lXq20zzVdAM?si=NaXxT2kPlc_AOZ94">THE LAST LIGHT (Song)</a></li>
-    <li><a class="small" target="_blank" href="https://youtu.be/uan22HKjbo8?si=V4RDj3tK4mdLlaKQ">Use My Life For Your Name</a></li>
-    <li><a class="small" target="_blank" href="https://youtu.be/HubSguLmuL4?si=9yAuj0Sl13Ud4GJP">The Last Light — Dream</a></li>
-    <li><a class="small" target="_blank" href="https://youtu.be/yjzQMLk5x3Q?si=psKJQC5cmtzNC0vr">Jesu Be Lifted Up</a></li>
-  </ul>
-</div>
-
-<div class="card">
-  <h3>Support the Media</h3>
-  <p class="small">Support recordings, streaming equipment & gospel media production.</p>
-
-  <p><strong>M-Pesa Paybill:</strong> <br> <span style="color:var(--accent)">REPLACE_PAYBILL</span></p>
-  <p><strong>Account:</strong> THEANCIENTCROSS</p>
-
-  <a class="btn" href="#donate">Donate</a>
-</div>
-
-</aside>
-</main>
-
-<footer style="margin-top:20px;text-align:center;color:#d0d7e4">
-  © 2025 THE ANCIENT CROSS STv — Worship Media
-</footer>
-
-</div>
+  <script>
+    // generate 50 links to the lyrics template
+    const container = document.getElementById('lyricsLinks');
+    for (let i=1;i<=50;i++){
+      const a = document.createElement('a');
+      a.href = `lyrics.html?id=${i}`;
+      a.target = '_self';
+      a.style.display = 'block';
+      a.style.padding = '8px';
+      a.style.borderRadius = '6px';
+      a.style.background = 'rgba(255,255,255,0.02)';
+      a.style.color = 'var(--muted)';
+      a.style.textDecoration = 'none';
+      a.style.fontSize = '13px';
+      a.textContent = `Lyric / Message #${i}`;
+      container.appendChild(a);
+    }
+  </script>
 </body>
-</html>
+  </html>
