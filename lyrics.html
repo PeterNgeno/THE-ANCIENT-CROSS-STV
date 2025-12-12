@@ -1,170 +1,137 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Lyrics Library — THE ANCIENT CROSS STv</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Song Lyrics — THE ANCIENT CROSS STv</title>
 
 <style>
 body{
   margin:0;
-  font-family: "Georgia", serif;
-  background:#ececec;
+  background:#eaeef3;
+  font-family:Georgia, serif;
 }
 
+/* Magazine header */
 .header{
   background:#003366;
-  padding:20px;
   color:white;
+  padding:20px;
   text-align:center;
   font-size:26px;
   font-weight:700;
+  letter-spacing:1px;
 }
 
 .container{
   max-width:900px;
-  margin:30px auto;
-  background:white;
-  padding:28px;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  margin:25px auto;
+  padding:15px;
 }
 
-/* Magazine style title */
-h1{
-  font-size:34px;
-  font-family: "Merriweather", serif;
-  margin-bottom:10px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.meta{
-  color:#666;
-  font-size:14px;
-  margin-bottom:20px;
-  border-left:4px solid #003366;
-  padding-left:8px;
-}
-
-/* Magazine paragraph style */
-.lyrics{
-  white-space:pre-wrap;
-  line-height:1.7;
-  font-size:18px;
-  margin-top:25px;
-}
-
-/* Embedded video */
-.video-box{
-  margin-top:30px;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 4px 20px rgba(0,0,0,0.3);
-}
-
-.video-box iframe{
+/* Search bar */
+.search-box input{
   width:100%;
-  height:380px;
-  border:0;
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #bbb;
+  font-size:17px;
 }
 
-.back{
-  display:inline-block;
-  margin-top:25px;
-  padding:10px 20px;
-  background:#003366;
-  color:white;
+/* Song list cards */
+.song-card{
+  background:white;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  margin-top:15px;
+  cursor:pointer;
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.song-card img{
+  width:90px;
+  height:90px;
   border-radius:8px;
-  text-decoration:none;
+  object-fit:cover;
+  border:2px solid #003366;
+}
+
+.song-title{
+  font-size:20px;
   font-weight:bold;
+  color:#003366;
+}
+
+.song-card:hover{
+  background:#f4f6fa;
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="header">THE ANCIENT CROSS STv — LYRICS</div>
+<div class="header">Song Lyrics Library</div>
 
-<div class="container" id="content">
-  <p>Loading...</p>
+<div class="container">
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search song title...">
+</div>
+
+<div id="songsList"></div>
+
 </div>
 
 <script>
-// GOOGLE SHEET PUBLIC FEED
-const SHEET_URL =
-  "https://docs.google.com/spreadsheets/d/189anRncn21sY8mBEgLpiJQqUQ-X02SEQW_zywHrBugM/gviz/tq?tqx=out:json";
+const sheetURL = "https://docs.google.com/spreadsheets/d/189anRncn21sY8mBEgLpiJQqUQ-X02SEQW_zywHrBugM/gviz/tq?tqx=out:json";
 
-function getQueryId(){
-  const params = new URLSearchParams(window.location.search);
-  return params.get("id");
-}
-
-fetch(SHEET_URL)
+// LOAD SONGS
+fetch(sheetURL)
   .then(res => res.text())
-  .then(text => {
-    const json = JSON.parse(text.substr(47).slice(0,-2));
-    const rows = json.table.rows;
+  .then(data => {
+     const json = JSON.parse(data.substring(47, data.length - 2));
+     const rows = json.table.rows;
 
-    const id = getQueryId();
+     const songs = rows.map(r => ({
+        title: r.c[0]?.v || "",
+        lyrics: r.c[1]?.v || "",
+        image: r.c[2]?.v || "",
+        youtube: r.c[3]?.v || ""
+     }));
 
-    if(!id){
-      // Show all songs list
-      let html = `<h1>Lyrics Library</h1><p class="meta">Choose a song below:</p><ul>`;
-      rows.forEach(r=>{
-        const sid = r.c[0]?.v;
-        const title = r.c[1]?.v;
-        if(sid && title){
-          html += `<li><a href="lyrics.html?id=${sid}">${title}</a></li>`;
-        }
-      });
-      html += "</ul>";
-      document.getElementById("content").innerHTML = html;
-      return;
-    }
+     window.allSongs = songs;
+     displaySongs(songs);
+  });
 
-    // Show single page
-    const song = rows.find(r => r.c[0]?.v == id);
-    if(!song){
-      document.getElementById("content").innerHTML = "<p>Song not found.</p>";
-      return;
-    }
+// DISPLAY LIST
+function displaySongs(list){
+  const container = document.getElementById("songsList");
+  container.innerHTML = "";
 
-    const title = song.c[1]?.v || "Untitled Song";
-    const lyrics = song.c[2]?.v || "No lyrics.";
-    const youtube = song.c[3]?.v || "";
+  list.forEach((song, i)=>{
+    const item = document.createElement("div");
+    item.className = "song-card";
+    item.onclick = ()=>{ window.location = "song.html?id=" + i };
 
-    // Extract video ID
-    let videoId = "";
-    if(youtube.includes("youtube.com") || youtube.includes("youtu.be")){
-      try{
-        if(youtube.includes("youtu.be")){
-          videoId = youtube.split("/").pop().split("?")[0];
-        } else {
-          videoId = new URL(youtube).searchParams.get("v");
-        }
-      }catch(e){}
-    }
-
-    let html = `
-      <h1>${title}</h1>
-      <div class="meta">Worship Media — THE ANCIENT CROSS STv</div>
-
-      <div class="lyrics">${lyrics}</div>
+    item.innerHTML = `
+      <img src="${song.image}">
+      <div class="song-title">${song.title}</div>
     `;
 
-    if(videoId){
-      html += `
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
-        </div>
-      `;
-    }
-
-    html += `<a class="back" href="lyrics.html">← Back to all lyrics</a>`;
-
-    document.getElementById("content").innerHTML = html;
+    container.appendChild(item);
   });
+}
+
+// SEARCH
+document.getElementById("searchInput").addEventListener("keyup", function(){
+  const text = this.value.toLowerCase();
+  const filtered = window.allSongs.filter(s => s.title.toLowerCase().includes(text));
+  displaySongs(filtered);
+});
 </script>
 
 </body>
