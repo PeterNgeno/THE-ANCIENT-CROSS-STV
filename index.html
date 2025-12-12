@@ -129,12 +129,23 @@
     }
 
     .small{font-size:14px;color:var(--muted)}
+
+    /* LINKS */
     ul.link-list{
       padding-left:20px;
-      color:var(--muted);
     }
-    ul.link-list li{margin-bottom:6px;}
-    ul.link-list li a:hover{color:var(--accent)}
+    ul.link-list li{
+      margin-bottom:6px;
+    }
+    ul.link-list li a{
+      color: #f2c94c;  /* visible against dark background */
+      text-decoration: none;
+      transition: color 0.2s, text-decoration 0.2s;
+    }
+    ul.link-list li a:hover{
+      color: #fff;  /* brighter on hover */
+      text-decoration: underline;
+    }
 
     footer{
       margin-top:32px;
