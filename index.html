@@ -31,11 +31,29 @@
     /* ===== TOP MAGAZINE BAR ===== */
     .top-bar{
       background:linear-gradient(90deg,#ffffff 0%, var(--red) 45%, #003366 100%);
-      padding:12px 20px;
+      padding:10px 20px;
       display:flex;
       justify-content:space-between;
       align-items:center;
       box-shadow:0 4px 12px rgba(0,0,0,0.35);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .top-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .top-logo{
+      width:42px;
+      height:42px;
+      border-radius:10px;
+      object-fit:cover;
+      background:#fff;
+      padding:4px;
     }
 
     .top-title{
@@ -43,6 +61,7 @@
       letter-spacing:1px;
       color:#003366;
       font-size:15px;
+      white-space:nowrap;
     }
 
     /* Dropdown */
@@ -70,7 +89,6 @@
       overflow:hidden;
       box-shadow:0 10px 20px rgba(0,0,0,0.35);
       display:none;
-      z-index:100;
     }
 
     .menu-content a{
@@ -89,7 +107,7 @@
       display:block;
     }
 
-    /* ===== MAIN CONTAINER ===== */
+    /* ===== MAIN CONTENT ===== */
     .container{
       max-width:1100px;
       margin:32px auto;
@@ -190,7 +208,10 @@
 
   <!-- TOP BAR -->
   <div class="top-bar">
-    <div class="top-title">THE ANCIENT CROSS STv</div>
+    <div class="top-left">
+      <img src="cross.png" alt="THE ANCIENT CROSS STv Logo" class="top-logo">
+      <div class="top-title">THE ANCIENT CROSS STv</div>
+    </div>
 
     <div class="menu">
       <button>More ▾</button>
@@ -204,7 +225,7 @@
 
   <div class="container">
 
-    <!-- HEADER -->
+    <!-- HEADER (unchanged) -->
     <header>
       <div class="logo">
         <img src="cross.png" alt="THE ANCIENT CROSS STv Logo">
