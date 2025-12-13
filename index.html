@@ -27,6 +27,69 @@
 
     a{text-decoration:none;}
 
+    /* ===================== */
+    /* MAGAZINE TOP BAR */
+    /* ===================== */
+    .top-bar{
+      background:linear-gradient(90deg,#ffffff 0%, #3cb371 40%, #003366 100%);
+      color:#003366;
+      padding:12px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .top-bar h2{
+      margin:0;
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    /* Dropdown */
+    .dropdown{
+      position:relative;
+    }
+
+    .dropdown button{
+      background:#003366;
+      color:#fff;
+      border:none;
+      padding:8px 14px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .dropdown-content{
+      display:none;
+      position:absolute;
+      right:0;
+      background:#ffffff;
+      min-width:160px;
+      border-radius:10px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.25);
+      overflow:hidden;
+      z-index:100;
+    }
+
+    .dropdown-content a{
+      display:block;
+      padding:10px 14px;
+      color:#003366;
+      font-weight:600;
+    }
+
+    .dropdown-content a:hover{
+      background:#f2f4f8;
+    }
+
+    .dropdown:hover .dropdown-content{
+      display:block;
+    }
+
+    /* ===================== */
+
     .container{
       max-width:1100px;
       margin:32px auto;
@@ -104,7 +167,6 @@
       padding:12px 18px;
       border-radius:10px;
       font-weight:700;
-      text-decoration:none;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn:hover{
@@ -121,31 +183,12 @@
       border-radius:10px;
       font-weight:700;
       margin-left:10px;
-      transition: background 0.3s, color 0.3s;
-    }
-    .btn-secondary:hover{
-      background:var(--accent);
-      color:#003366;
     }
 
     .small{font-size:14px;color:var(--muted)}
 
-    /* LINKS */
     a.link{
-      color: #f2c94c;  
-      text-decoration: none;
-      transition: color 0.2s, text-decoration 0.2s;
-    }
-    a.link:hover{
-      color: #fff;
-      text-decoration: underline;
-    }
-
-    ul.link-list{
-      padding-left:20px;
-    }
-    ul.link-list li{
-      margin-bottom:6px;
+      color:#f2c94c;
     }
 
     footer{
@@ -158,6 +201,20 @@
 </head>
 
 <body>
+
+  <!-- MAGAZINE TOP BAR -->
+  <div class="top-bar">
+    <h2>THE ANCIENT CROSS STv</h2>
+    <div class="dropdown">
+      <button>More ▾</button>
+      <div class="dropdown-content">
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
 
     <!-- HEADER -->
@@ -172,8 +229,8 @@
 
         <div>
           <a class="btn" href="https://www.youtube.com/@theancientcrossTV" target="_blank">YouTube Channel</a>
-          <a class="btn-secondary" href="lyrics.html" target="_self">Lyrics & Messages</a>
-          <a class="btn-secondary" href="about.html" target="_self">About</a>
+          <a class="btn-secondary" href="lyrics.html">Lyrics & Messages</a>
+          <a class="btn-secondary" href="about.html">About</a>
         </div>
       </div>
     </header>
@@ -181,48 +238,23 @@
     <!-- MAIN GRID -->
     <main class="grid">
 
-      <!-- LEFT SIDE -->
       <section class="card">
-
         <div class="video">
           <iframe src="https://www.youtube.com/embed/lXq20zzVdAM" allowfullscreen></iframe>
         </div>
 
         <h2 style="margin-top:16px;font-size:22px">Featured: THE LAST LIGHT</h2>
-        <p class="small">A prophetic worship message calling the church to repentance and readiness. Please like, share and subscribe.</p>
-
-        <div style="margin-top:12px" class="small">
-          <strong>Other videos:</strong>
-          <ul class="link-list">
-            <li><a class="link" href="https://youtu.be/uan22HKjbo8?si=V4RDj3tK4mdLlaKQ" target="_blank">Use My Life For Your Name</a></li>
-            <li><a class="link" href="https://youtu.be/HubSguLmuL4?si=9yAuj0Sl13Ud4GJP" target="_blank">The Last Light - Dream</a></li>
-            <li><a class="link" href="https://youtu.be/yjzQMLk5x3Q?si=psKJQC5cmtzNC0vr" target="_blank">Jesu Be Lifted Up (multi-language)</a></li>
-          </ul>
-        </div>
-
+        <p class="small">A prophetic worship message calling the church to repentance and readiness.</p>
       </section>
 
-      <!-- RIGHT SIDE -->
       <aside>
         <div class="card">
           <h3>Support the media</h3>
-          <p class="small">Support recordings, streaming equipment & media production.</p>
           <p class="small"><strong>M-Pesa Paybill:</strong> <span style="color:var(--accent)">REPLACE_PAYBILL</span></p>
           <p class="small"><strong>Account:</strong> THEANCIENTCROSS</p>
-
-          <div style="margin-top:12px">
-            <a class="btn" href="#donate">Donate</a>
-          </div>
         </div>
-
-        <div class="card" style="margin-top:16px">
-          <h3>Quick access</h3>
-          <ul style="padding-left:20px">
-            <li class="small"><a class="link" href="lyrics.html">Open Lyrics & Messages</a></li>
-          </ul>
-        </div>
-
       </aside>
+
     </main>
 
     <footer>
@@ -231,4 +263,4 @@
 
   </div>
 </body>
-                                 </html>
+</html>
