@@ -13,6 +13,8 @@
       --accent:#f2c94c;
       --text:#eef4ff;
       --muted:#c7d6ee;
+      --card-bg: rgba(255,255,255,0.06);
+      --shadow: rgba(0,0,0,0.4);
     }
 
     *{box-sizing:border-box}
@@ -62,12 +64,17 @@
     }
 
     .card{
-      background:#ffffff0d;
-      border:1px solid #ffffff1a;
+      background:var(--card-bg);
       border-radius:14px;
       padding:22px;
       margin-bottom:20px;
-      box-shadow:0 10px 30px #00000040;
+      box-shadow:0 6px 16px var(--shadow);
+      text-align:center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover{
+      transform: translateY(-3px);
     }
 
     h2{
@@ -114,7 +121,6 @@
 <body>
   <div class="container">
     <header>
-      <!-- Logo image -->
       <div class="logo">
         <img src="cross.png" alt="THE ANCIENT CROSS STV Logo" style="width:100%;height:100%;border-radius:14px;object-fit:cover;">
       </div>
@@ -154,7 +160,7 @@
       <h2>About the Creator</h2>
       <p>
         THE ANCIENT CROSS STV is created and managed by <strong>CREATOR KING</strong>
-        (Peter Simon), a gospel songwriter, worship musician, and digital creator.
+        (Peter Kipsangngeno), a gospel songwriter, worship musician, and digital creator.
       </p>
       <p>
         Through music and media, the channel calls believers to watchfulness and faithfulness
@@ -165,27 +171,28 @@
     <section class="card">
       <h2>Connect With Us</h2>
       <p>Watch, listen, like, share, and subscribe on our official platforms:</p>
-      
-      <div style="text-align:center; margin-top:16px;">
+
+      <!-- Polished Subscribe Card -->
+      <div style="margin-top:16px;">
         <!-- YouTube Logo -->
-        <div style="display:inline-block; margin-bottom:12px;">
+        <div style="margin-bottom:12px;">
           <img src="cross.png" alt="THE ANCIENT CROSS STV Logo" style="width:60px;height:60px;border-radius:12px;object-fit:cover;">
         </div>
-        
+
         <!-- YouTube Subscribe Button -->
         <div>
           <script src="https://apis.google.com/js/platform.js"></script>
-          <div class="g-ytsubscribe" 
-               data-channelid="YOUR_CHANNEL_ID" 
-               data-layout="full" 
+          <div class="g-ytsubscribe"
+               data-channelid="YOUR_CHANNEL_ID"
+               data-layout="full"
                data-count="default">
           </div>
         </div>
-      </div>
 
-      <div class="links" style="margin-top:16px;">
-        <a href="index.html">Home</a>
-        <a href="donate.html">Support / Donate</a>
+        <div class="links" style="margin-top:16px;">
+          <a href="index.html">Home</a>
+          <a href="donate.html">Support / Donate</a>
+        </div>
       </div>
     </section>
 
