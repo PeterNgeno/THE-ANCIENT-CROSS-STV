@@ -7,6 +7,32 @@
   <meta name="description" content="About THE ANCIENT CROSS STV — a Christian media platform producing prophetic worship music and visual content." />  
 
   <style>
+    /* Finger animation */
+.subscribe-hint{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.subscribe-hint span{
+  font-size:32px;
+  animation: pointDown 1.4s infinite ease-in-out;
+}
+
+.subscribe-hint small{
+  margin-top:6px;
+  color:var(--accent);
+  font-weight:600;
+  letter-spacing:0.3px;
+}
+
+/* Animation keyframes */
+@keyframes pointDown{
+  0%{ transform: translateY(0); opacity:0.6; }
+  50%{ transform: translateY(8px); opacity:1; }
+  100%{ transform: translateY(0); opacity:0.6; }
+}
     :root{
       --blue:#0b3c7a;
       --blue-dark:#072a55;
