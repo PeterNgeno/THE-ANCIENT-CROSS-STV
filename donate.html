@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support PeronTips</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .phone-input {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      margin: 15px 0;
+    }
+
+    .amounts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .amounts button {
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #2ecc71;
+      color: white;
+      cursor: pointer;
+    }
+
+    .amounts button:hover {
+      background: #27ae60;
+    }
+
+    .status {
+      margin-top: 15px;
+      font-size: 15px;
+      color: #444;
+      text-align: center;
+    }
+
+    .paypal {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .paypal a {
+      background: #0070ba;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .paypal a:hover {
+      background: #005ea6;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Support PeronTips</h1>
+
+  <p>
+    Your donation helps us improve content, maintain servers,
+    and reach more learners across Africa and beyond.
+  </p>
+
+  <input
+    id="phone"
+    class="phone-input"
+    placeholder="Enter phone number (07XXXXXXXX)"
+    type="tel"
+  >
+
+  <p><b>Select donation amount (Ksh):</b></p>
+
+  <div class="amounts">
+    <button onclick="donate(10)">10</button>
+    <button onclick="donate(20)">20</button>
+    <button onclick="donate(50)">50</button>
+    <button onclick="donate(100)">100</button>
+    <button onclick="donate(400)">400</button>
+    <button onclick="donate(500)">500</button>
+    <button onclick="donate(700)">700</button>
+    <button onclick="donate(800)">800</button>
+    <button onclick="donate(1000)">1000</button>
+    <button onclick="donate(2000)">2000</button>
+    <button onclick="donate(3000)">3000</button>
+    <button onclick="donate(5000)">5000</button>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <div class="paypal">
+    <p>Or donate via PayPal</p>
+    <a href="https://www.paypal.com/donate?business=peterkipsangngeno@gmail.com" target="_blank">
+      Donate with PayPal
+    </a>
+  </div>
+</div>
+
+<script>
+async function donate(amount) {
+  const status = document.getElementById('status');
+  let phone = document.getElementById('phone').value.trim();
+
+  if (!phone) {
+    alert('Enter phone number');
+    return;
+  }
+
+  // Convert 07XXXXXXXX → 2547XXXXXXXX
+  if (phone.startsWith('07')) {
+    phone = '254' + phone.slice(1);
+  }
+
+  status.innerText = 'Sending STK Push…';
+
+  const res = await fetch('https://perontips-backend.onrender.com/pay', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ phone, amount })
+  });
+
+  const data = await res.json();
+
+  if (data.ResponseCode == 0) {
+    status.innerText = 'Check your phone and enter M-Pesa PIN…';
+    pollStatus(phone);
+  } else {
+    status.innerText = 'Failed to send STK Push';
+  }
+}
+
+async function pollStatus(phone) {
+  const status = document.getElementById('status');
+
+  const interval = setInterval(async () => {
+    const res = await fetch(
+      `https://perontips-backend.onrender.com/status?phone=${phone}`
+    );
+    const data = await res.json();
+
+    if (data.status === 'Success') {
+      clearInterval(interval);
+      status.innerText = '🙏 Thank you for supporting PeronTips!';
+    }
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
