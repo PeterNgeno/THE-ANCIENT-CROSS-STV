@@ -115,7 +115,7 @@ function displaySongs(list){
   list.forEach((song, i)=>{
     const item = document.createElement("div");
     item.className = "song-card";
-    item.onclick = ()=>{ window.location = "song.html?id=" + i };
+    item.onclick = ()=>{ window.location = "view.html?id=" + i };
 
     item.innerHTML = `
       <img src="${song.image}">
