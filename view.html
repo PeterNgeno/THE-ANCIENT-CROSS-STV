@@ -83,11 +83,21 @@ body{
 
 /* LYRICS */
 .lyrics{
-  white-space:pre-wrap;
   line-height:1.7;
   font-size:18px;
   color: var(--text-dark);
   margin-top:25px;
+}
+
+.lyrics h2 {
+  font-size: 24px;
+  color: var(--header-bg);
+  margin: 20px 0 10px 0;
+  font-weight: bold;
+}
+
+.lyrics p {
+  margin: 5px 0;
 }
 
 /* VIDEO BOX */
@@ -147,8 +157,24 @@ fetch(sheetURL)
      const youtube = row[3]?.v || "";
 
      document.getElementById("title").textContent = title;
-     document.getElementById("lyrics").textContent = lyrics;
      document.getElementById("image").src = image;
+
+     const lyricsDiv = document.getElementById("lyrics");
+     lyricsDiv.innerHTML = "";
+     lyrics.split("\n").forEach(line => {
+       line = line.trim();
+       if (!line) return;
+
+       if (line.startsWith("##")) {
+         const subtitle = document.createElement("h2");
+         subtitle.textContent = line.replace("##","").trim();
+         lyricsDiv.appendChild(subtitle);
+       } else {
+         const p = document.createElement("p");
+         p.textContent = line;
+         lyricsDiv.appendChild(p);
+       }
+     });
 
      if(youtube){
        const ytId = youtube.split("v=")[1] || youtube.split(".be/")[1];
