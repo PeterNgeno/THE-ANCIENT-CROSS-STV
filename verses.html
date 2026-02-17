@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Song Lyrics — THE ANCIENT CROSS STv</title>
+
+<style>
+body{
+  margin:0;
+  background:#eaeef3;
+  font-family:Georgia, serif;
+}
+
+/* Magazine header */
+.header{
+  background:#003366;
+  color:white;
+  padding:20px;
+  text-align:center;
+  font-size:26px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.container{
+  max-width:900px;
+  margin:25px auto;
+  padding:15px;
+}
+
+/* Search bar */
+.search-box input{
+  width:100%;
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #bbb;
+  font-size:17px;
+}
+
+/* Song list cards */
+.song-card{
+  background:white;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  margin-top:15px;
+  cursor:pointer;
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.song-card img{
+  width:90px;
+  height:90px;
+  border-radius:8px;
+  object-fit:cover;
+  border:2px solid #003366;
+}
+
+.song-title{
+  font-size:20px;
+  font-weight:bold;
+  color:#003366;
+}
+
+.song-card:hover{
+  background:#f4f6fa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Song Lyrics Library</div>
+
+<div class="container">
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search song title...">
+</div>
+
+<div id="songsList"></div>
+
+</div>
+
+<script>
+const sheetURL = "https://docs.google.com/spreadsheets/d/1bEubbuVy_7KfBHU13n1yoiC0ARLElumXjo3IovgEGc0/gviz/tq?tqx=out:json";
+
+// LOAD SONGS
+fetch(sheetURL)
+  .then(res => res.text())
+  .then(data => {
+     const json = JSON.parse(data.substring(47, data.length - 2));
+     const rows = json.table.rows;
+
+     const songs = rows.map(r => ({
+        title: r.c[0]?.v || "",
+        lyrics: r.c[1]?.v || "",
+        image: r.c[2]?.v || "",
+        youtube: r.c[3]?.v || ""
+     }));
+
+     window.allSongs = songs;
+     displaySongs(songs);
+  });
+
+// DISPLAY LIST
+function displaySongs(list){
+  const container = document.getElementById("songsList");
+  container.innerHTML = "";
+
+  list.forEach((song, i)=>{
+    const item = document.createElement("div");
+    item.className = "song-card";
+    item.onclick = ()=>{ window.location = "song.html?id=" + i };
+
+    item.innerHTML = `
+      <img src="${song.image}">
+      <div class="song-title">${song.title}</div>
+    `;
+
+    container.appendChild(item);
+  });
+}
+
+// SEARCH
+document.getElementById("searchInput").addEventListener("keyup", function(){
+  const text = this.value.toLowerCase();
+  const filtered = window.allSongs.filter(s => s.title.toLowerCase().includes(text));
+  displaySongs(filtered);
+});
+</script>
+
+</body>
+</html>
