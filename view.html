@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Lyrics</title>
+
+<style>
+:root {
+  --accent: #f2c94c;
+  --bg: #f2f4f8;
+  --text-dark: #222;
+  --header-bg: #003366;
+  --muted: #555;
+}
+
+body{
+  margin:0;
+  background: var(--bg);
+  font-family: Georgia, serif;
+  color: var(--text-dark);
+}
+
+/* HEADER WITH SMALL LOGO */
+.header{
+  position: relative;
+  max-width: 900px;
+  margin: 30px auto 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  padding: 20px 20px 0 20px;
+}
+
+.header img.logo{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.1);
+}
+
+.article{
+  padding: 40px 30px 30px 30px;
+}
+
+/* BACK LINK */
+.back-link{
+  display:inline-block;
+  margin-bottom:25px;
+  color: var(--header-bg);
+  font-weight:bold;
+  text-decoration:none;
+  transition: color 0.2s;
+}
+.back-link:hover{
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* SONG TITLE */
+.song-title{
+  text-align:center;
+  font-size: 32px;
+  font-weight:bold;
+  color: var(--header-bg);
+  margin-bottom: 25px;
+}
+
+/* SONG IMAGE */
+.song-image{
+  width:100%;
+  max-height:400px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* LYRICS */
+.lyrics{
+  white-space:pre-wrap;
+  line-height:1.7;
+  font-size:18px;
+  color: var(--text-dark);
+  margin-top:25px;
+}
+
+/* VIDEO BOX */
+.video-box{
+  margin-top:30px;
+  text-align:center;
+}
+.video-box iframe{
+  width: 100%;
+  max-width: 100%;
+  height: 360px;
+  border-radius:12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  border:0;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .song-title{
+    font-size:26px;
+  }
+  .header img.logo{
+    width:50px;
+    height:50px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="cross.png" class="logo" alt="Logo">
+  <div class="article">
+    <a class="back-link" href="lyrics.html">← Back to All Lyrics</a>
+    <h1 class="song-title" id="title"></h1>
+    <img id="image" class="song-image" alt="Song Image">
+    <div class="lyrics" id="lyrics"></div>
+    <div class="video-box" id="video"></div>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const sheetURL = "https://docs.google.com/spreadsheets/d/1bEubbuVy_7KfBHU13n1yoiC0ARLElumXjo3IovgEGc0/gviz/tq?tqx=out:json";
+fetch(sheetURL)
+  .then(res => res.text())
+  .then(data => {
+     const json = JSON.parse(data.substring(47, data.length - 2));
+     const row = json.table.rows[id].c;
+
+     const title = row[0]?.v || "";
+     const lyrics = row[1]?.v || "";
+     const image = row[2]?.v || "";
+     const youtube = row[3]?.v || "";
+
+     document.getElementById("title").textContent = title;
+     document.getElementById("lyrics").textContent = lyrics;
+     document.getElementById("image").src = image;
+
+     if(youtube){
+       const ytId = youtube.split("v=")[1] || youtube.split(".be/")[1];
+       const embed = `<iframe src="https://www.youtube.com/embed/${ytId}" allowfullscreen></iframe>`;
+       document.getElementById("video").innerHTML = embed;
+     }
+  });
+</script>
+
+</body>
+</html>
