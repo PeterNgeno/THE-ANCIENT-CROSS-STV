@@ -119,7 +119,7 @@ header{
 display:flex;
 align-items:center;
 gap:20px;
-margin-bottom:32px;
+margin-bottom:16px;
 flex-wrap:wrap;
 }
 
@@ -200,7 +200,7 @@ color:var(--muted);
 font-size:14px;
 }
 
-/* Swiper Gallery Styles - Top Hero */
+/* Swiper Gallery Styles - Below Header */
 .hero-swiper {
   width: 100%;
   position: relative;
@@ -226,16 +226,6 @@ font-size:14px;
 </head>
 
 <body>
-
-<!-- Hero Gallery at Top -->
-<div class="hero-swiper swiper mySwiper">
-  <div class="swiper-wrapper" id="gallery-wrapper">
-    <!-- Slides will load dynamically -->
-  </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</div>
 
 <div class="top-bar">
 <div class="top-left">
@@ -271,6 +261,16 @@ font-size:14px;
 <a class="btn-secondary" href="about.html">About</a>
 </div>
 </header>
+
+<!-- Hero Gallery BELOW Header -->
+<div class="hero-swiper swiper mySwiper">
+  <div class="swiper-wrapper" id="gallery-wrapper">
+    <!-- Slides will load dynamically -->
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
 
 <main class="grid">
 
