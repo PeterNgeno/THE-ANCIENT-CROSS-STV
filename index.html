@@ -18,6 +18,9 @@ crossorigin="anonymous"></script>
 
 <link rel="canonical" href="https://www.theancientcrosstv.com/" />
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
 <style>
 :root{
 --accent:#f2c94c;
@@ -196,6 +199,21 @@ text-align:center;
 color:var(--muted);
 font-size:14px;
 }
+
+/* Swiper Gallery Styles */
+.swiper {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+  border-radius:12px;
+}
+
+.swiper-slide img, .swiper-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+  border-radius:12px;
+}
 </style>
 </head>
 
@@ -284,6 +302,20 @@ May the message of the Cross strengthen your faith and guide your spiritual jour
 </p>
 </section>
 
+<!-- New Gallery Section -->
+<section class="card">
+<h2>Gallery: Worship Videos & Images</h2>
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper" id="gallery-wrapper">
+    <!-- Slides will be injected dynamically -->
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+<p>Click the gallery to toggle between Fade and Cube transitions.</p>
+</section>
+
 </div>
 
 <aside>
@@ -301,6 +333,60 @@ May the message of the Cross strengthen your faith and guide your spiritual jour
 </footer>
 
 </div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+const sheetUrl = "https://docs.google.com/spreadsheets/d/11e5DQC8WOsa3JXv5bgrKdAMRE6b97dowith-6Yrbmuo/gviz/tq?tqx=out:json";
+
+async function loadGallery() {
+  const res = await fetch(sheetUrl);
+  const text = await res.text();
+  const json = JSON.parse(text.substring(47, text.length - 2));
+  const rows = json.table.rows;
+  const wrapper = document.getElementById("gallery-wrapper");
+
+  rows.forEach(row => {
+    row.c.forEach(cell => {
+      if(cell && cell.v){
+        const url = cell.v.trim();
+        let slide;
+        if(url.match(/\.(jpeg|jpg|gif|png|mp4|webm)$/i)){
+          if(url.match(/\.(mp4|webm)$/i)){
+            slide = `<div class="swiper-slide">
+                      <video src="${url}" controls muted loop></video>
+                     </div>`;
+          } else {
+            slide = `<div class="swiper-slide">
+                      <img src="${url}" alt="Gallery Image">
+                     </div>`;
+          }
+          wrapper.insertAdjacentHTML("beforeend", slide);
+        }
+      }
+    });
+  });
+
+  const swiper = new Swiper(".mySwiper", {
+    effect: "fade",
+    loop: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    cubeEffect: { shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 }
+  });
+
+  let isFade = true;
+  document.querySelector(".mySwiper").addEventListener("click", () => {
+    isFade = !isFade;
+    swiper.params.effect = isFade ? "fade" : "cube";
+    swiper.update();
+  });
+}
+
+loadGallery();
+</script>
 
 </body>
 </html>
