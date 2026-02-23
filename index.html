@@ -200,24 +200,42 @@ color:var(--muted);
 font-size:14px;
 }
 
-/* Swiper Gallery Styles */
-.swiper {
+/* Swiper Gallery Styles - Top Hero */
+.hero-swiper {
   width: 100%;
-  height: 400px;
-  margin-top: 20px;
-  border-radius:12px;
+  position: relative;
+  padding-top: 56.25%; /* 16:9 ratio */
+  margin-bottom: 32px;
 }
 
-.swiper-slide img, .swiper-slide video {
-  width: 100%;
-  height: 100%;
+.hero-swiper .swiper-wrapper {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.hero-swiper .swiper-slide img,
+.hero-swiper .swiper-slide video {
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:12px;
 }
 </style>
 </head>
 
 <body>
+
+<!-- Hero Gallery at Top -->
+<div class="hero-swiper swiper mySwiper">
+  <div class="swiper-wrapper" id="gallery-wrapper">
+    <!-- Slides will load dynamically -->
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
 
 <div class="top-bar">
 <div class="top-left">
@@ -302,20 +320,6 @@ May the message of the Cross strengthen your faith and guide your spiritual jour
 </p>
 </section>
 
-<!-- New Gallery Section -->
-<section class="card">
-<h2>Gallery: Worship Videos & Images</h2>
-<div class="swiper mySwiper">
-  <div class="swiper-wrapper" id="gallery-wrapper">
-    <!-- Slides will be injected dynamically -->
-  </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</div>
-<p>Click the gallery to toggle between Fade and Cube transitions.</p>
-</section>
-
 </div>
 
 <aside>
@@ -331,8 +335,6 @@ May the message of the Cross strengthen your faith and guide your spiritual jour
 <footer>
 © 2026 THE ANCIENT CROSS STv — Christian Worship Media Platform
 </footer>
-
-</div>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -389,4 +391,4 @@ loadGallery();
 </script>
 
 </body>
-</html>
+                       </html>
