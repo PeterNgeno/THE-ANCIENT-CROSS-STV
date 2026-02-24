@@ -204,7 +204,7 @@ font-size:14px;
 .hero-swiper {
   width: 100%;
   position: relative;
-  padding-top: 56.25%; /* 16:9 ratio */
+  padding-top: 56.25%;
   margin-bottom: 32px;
 }
 
@@ -227,7 +227,6 @@ font-size:14px;
 
 <body>
 
-<!-- TOP LOGO & TITLE -->
 <div class="top-bar">
 <div class="top-left">
 <img src="cross.png" alt="THE ANCIENT CROSS STv Logo" class="top-logo">
@@ -240,7 +239,7 @@ font-size:14px;
 <a href="terms.html">Terms & Conditions</a>
 <a href="privacy.html">Privacy Policy</a>
 <a href="contact.html">Contact</a>
-  <a href="about.html">About</a>
+<a href="about.html">About</a>
 </div>
 </div>
 </div>
@@ -264,11 +263,8 @@ font-size:14px;
 </div>
 </header>
 
-<!-- Hero Gallery BELOW Header -->
 <div class="hero-swiper swiper mySwiper">
-  <div class="swiper-wrapper" id="gallery-wrapper">
-    <!-- Slides will load dynamically -->
-  </div>
+  <div class="swiper-wrapper" id="gallery-wrapper"></div>
   <div class="swiper-pagination"></div>
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
@@ -289,48 +285,25 @@ font-size:14px;
 <section class="card">
 <h2>Welcome to The Ancient Cross STv</h2>
 <p>
-THE ANCIENT CROSS STv is a global Christian worship and Bible teaching platform dedicated to spreading the message of repentance, holiness, and spiritual growth. Our mission is to help believers deepen their understanding of Scripture and strengthen their relationship with Jesus Christ.
-</p>
-<p>
-In a generation filled with distractions, the message of the Cross remains central. The Cross represents redemption, forgiveness, sacrifice, and eternal hope. Through worship songs, written teachings, and encouragement articles, we remind believers of the importance of righteous living and spiritual preparation.
-</p>
-<p>
-This platform is designed for Christians who desire deeper Biblical understanding, spiritual maturity, and faith-based encouragement rooted in Scripture.
+THE ANCIENT CROSS STv is a global Christian worship and Bible teaching platform dedicated to spreading the message of repentance, holiness, and spiritual growth.
 </p>
 </section>
 
 <section class="card">
 <h2>Prophetic Worship and Spiritual Growth</h2>
 <p>
-Prophetic worship is worship that aligns with the heart and will of God. It calls believers to repentance, obedience, and holiness. Spiritual growth requires studying Scripture, applying Biblical principles, and developing a life of prayer and integrity.
-</p>
-<p>
-We provide teachings on repentance, faith, holiness, obedience, Christian character, and preparation for eternity. Each message is designed not only to inspire but to transform lives according to the Word of God.
+Prophetic worship aligns believers with the heart and will of God.
 </p>
 </section>
 
 <section class="card">
 <h2>Bible Teachings and Christian Encouragement</h2>
 <p>
-Our written teachings explain Biblical truths in a practical and understandable way. We focus on helping believers grow spiritually, remain steadfast during trials, and maintain hope in challenging seasons.
-</p>
-<p>
-Through Scripture-based articles, worship media, and encouragement messages, THE ANCIENT CROSS STv serves believers worldwide who desire to walk faithfully with Christ and remain rooted in Biblical truth.
-</p>
-<p>
-May the message of the Cross strengthen your faith and guide your spiritual journey.
+Through Scripture-based articles, worship media, and encouragement messages, THE ANCIENT CROSS STv serves believers worldwide.
 </p>
 </section>
 
 </div>
-
-<aside>
-<div class="card">
-<h3>Support the Media</h3>
-<p>Tap the button to receive an M-Pesa STK prompt on your phone.</p>
-<a class="btn" href="donate.html">Donate Now</a>
-</div>
-</aside>
 
 </main>
 
@@ -338,7 +311,6 @@ May the message of the Cross strengthen your faith and guide your spiritual jour
 © 2026 THE ANCIENT CROSS STv — Christian Worship Media Platform
 </footer>
 
-<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 <script>
@@ -377,8 +349,7 @@ async function loadGallery() {
     loop: true,
     pagination: { el: ".swiper-pagination", clickable: true },
     navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-    autoplay: { delay: 4000, disableOnInteraction: false },
-    cubeEffect: { shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 }
+    autoplay: { delay: 4000, disableOnInteraction: false }
   });
 
   let isFade = true;
@@ -393,4 +364,4 @@ loadGallery();
 </script>
 
 </body>
-  </html>
+</html>
