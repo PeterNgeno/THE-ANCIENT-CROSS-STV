@@ -24,26 +24,26 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:linear-gradient(180deg,var(--blue) 0%, var(--blue-dark) 100%);
       color:var(--text);
-      line-height:1.7;
+      line-height:1.8;
     }
 
     .container{
-      max-width:950px;
+      max-width:1000px;
       margin:0 auto;
-      padding:30px 20px 60px;
+      padding:40px 20px 80px;
     }
 
     header{
       display:flex;
       align-items:center;
-      gap:18px;
-      margin-bottom:30px;
+      gap:20px;
+      margin-bottom:40px;
     }
 
     .logo{
-      width:80px;
-      height:80px;
-      border-radius:16px;
+      width:90px;
+      height:90px;
+      border-radius:18px;
       background:#ffffff10;
       display:flex;
       align-items:center;
@@ -55,43 +55,48 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      border-radius:16px;
+      border-radius:18px;
     }
 
     h1{
       margin:0;
-      font-size:28px;
-      letter-spacing:0.4px;
+      font-size:32px;
+      letter-spacing:0.6px;
     }
 
     .subtitle{
-      margin-top:6px;
+      margin-top:8px;
       color:var(--muted);
-      font-size:15px;
+      font-size:16px;
     }
 
     .card{
       background:var(--card-bg);
-      border-radius:16px;
-      padding:26px;
-      margin-bottom:24px;
-      box-shadow:0 8px 18px var(--shadow);
-      text-align:center;
+      border-radius:18px;
+      padding:36px;
+      margin-bottom:30px;
+      box-shadow:0 10px 22px var(--shadow);
       transition: transform 0.3s ease;
     }
 
     .card:hover{
-      transform: translateY(-4px);
+      transform: translateY(-5px);
     }
 
     h2{
       margin-top:0;
-      font-size:22px;
-      color:#ffffff;
+      font-size:26px;
+      margin-bottom:18px;
+    }
+
+    h3{
+      margin-top:28px;
+      font-size:20px;
+      color:var(--accent);
     }
 
     p{
-      margin:12px 0;
+      margin:14px 0;
     }
 
     .highlight{
@@ -101,7 +106,7 @@
 
     .links a{
       display:inline-block;
-      margin:8px 12px 0;
+      margin:10px 14px 0 0;
       color:var(--accent);
       text-decoration:none;
       font-weight:600;
@@ -111,46 +116,21 @@
       text-decoration:underline;
     }
 
-    .subscribe-hint{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      margin-bottom:14px;
-    }
-
-    .subscribe-hint span{
-      font-size:32px;
-      animation: pointDown 1.4s infinite ease-in-out;
-    }
-
-    .subscribe-hint small{
-      margin-top:6px;
-      color:var(--accent);
-      font-weight:600;
-      letter-spacing:0.3px;
-    }
-
-    @keyframes pointDown{
-      0%{ transform: translateY(0); opacity:0.6; }
-      50%{ transform: translateY(8px); opacity:1; }
-      100%{ transform: translateY(0); opacity:0.6; }
-    }
-
     footer{
-      margin-top:50px;
+      margin-top:60px;
       text-align:center;
-      font-size:13px;
+      font-size:14px;
       color:var(--muted);
     }
 
-    @media(max-width:600px){
+    @media(max-width:700px){
       header{
         flex-direction:column;
         align-items:flex-start;
       }
       .logo{
-        width:70px;
-        height:70px;
+        width:75px;
+        height:75px;
       }
     }
   </style>
@@ -165,95 +145,147 @@
       </div>
       <div>
         <h1>THE ANCIENT CROSS STV</h1>
-        <div class="subtitle">Christian media • worship music • visual storytelling</div>
+        <div class="subtitle">Christian media • worship music • biblical reflection • visual storytelling</div>
       </div>
     </header>
 
     <section class="card">
       <h2>Who We Are</h2>
-      <p>
-        <strong>THE ANCIENT CROSS STV</strong> is a <span class="highlight">Christian media platform</span> dedicated to proclaiming the message of Jesus Christ through music and creative visual expression.
-      </p>
-      <p>
-        We are not a church or a religious institution. We are a digital platform committed to producing content that strengthens faith, encourages repentance, inspires holiness, and reminds believers of the eternal hope found in Christ.
-      </p>
-      <p>
-        Every song, video, and message is created with one central purpose: 
-        <span class="highlight">to lift up the Cross and point hearts back to God.</span>
-      </p>
+
+      <p><strong>THE ANCIENT CROSS STV</strong> is a Christ-centered digital media platform devoted to proclaiming the message of the Cross through music, visual storytelling, reflective teaching, and spiritually intentional creative expression. We exist in the digital space not as a church institution, not as a denomination, and not as an organization seeking religious control — but as a media voice committed to biblical truth, reverent worship, and spiritual awakening.</p>
+
+      <p>In a generation surrounded by noise, distraction, confusion, and moral uncertainty, our calling is simple yet weighty: <span class="highlight">to lift up Christ through sound and image</span>. We believe media is not neutral. It shapes hearts, directs attention, and influences thought patterns. Therefore, we intentionally create content that draws attention upward — toward holiness, repentance, faith, surrender, watchfulness, and hope.</p>
+
+      <p>The name “The Ancient Cross” reflects our conviction that the message of salvation is not new, not modernized, and not reinvented. It is ancient. It stands unchanged across centuries. It is rooted in sacrifice, redemption, mercy, and covenant love. The Cross remains the center of true spiritual transformation. Everything we produce flows from that foundation.</p>
+
+      <p>As a platform, we function entirely in the digital sphere. Through worship compositions, lyric visuals, contemplative messages, and spiritually reflective presentations, we seek to encourage believers and challenge the complacent. Our work is created prayerfully, thoughtfully, and with reverence for Scripture.</p>
+
+      <p>We do not claim perfection. We do not claim to replace the local church. Rather, we aim to complement spiritual growth by offering content that strengthens faith outside traditional gathering spaces. Our desire is that every viewer, listener, and reader leaves with a clearer awareness of God’s holiness and a deeper hunger for genuine devotion.</p>
     </section>
 
     <section class="card">
       <h2>Our Mission</h2>
-      <p>
-        Our mission is to use media as a tool for spiritual awakening in a generation surrounded by noise and distraction.
-      </p>
-      <p>
-        Through worship music, reflective messages, and Christ-centered storytelling, we seek to:
-      </p>
-      <p>
-        • Call believers to deeper intimacy with God<br>
-        • Encourage readiness for the return of Christ<br>
-        • Promote biblical truth without compromise<br>
-        • Inspire faithfulness in challenging times
-      </p>
+
+      <p>Our mission is to use digital media as an instrument for spiritual clarity in an age of confusion. We believe creativity can serve eternity when surrendered to divine purpose. Therefore, THE ANCIENT CROSS STV exists to communicate biblical truth through music and imagery in a way that is both reverent and relevant.</p>
+
+      <h3>1. To Exalt Christ</h3>
+      <p>Everything we create is centered on exalting Jesus Christ — not personalities, not trends, not emotional spectacle. Worship is not performance; it is surrender. Our music and visuals are designed to direct attention to God’s glory rather than human achievement.</p>
+
+      <h3>2. To Encourage Repentance and Renewal</h3>
+      <p>True spiritual growth requires self-examination and humility. Our content often reflects themes of repentance, consecration, spiritual vigilance, and wholehearted obedience. We believe awakening begins when hearts are honest before God.</p>
+
+      <h3>3. To Inspire Watchfulness</h3>
+      <p>Scripture calls believers to remain spiritually alert. We live in times of rapid cultural change, moral instability, and widespread distraction. Our platform encourages readiness, faithfulness, and perseverance grounded in Scripture.</p>
+
+      <h3>4. To Promote Biblical Integrity</h3>
+      <p>We aim to communicate biblical truths without compromise or distortion. While we respect dialogue and thoughtful discussion, our creative direction is shaped by historic Christian convictions rooted in Scripture.</p>
+
+      <h3>5. To Provide Media With Eternal Purpose</h3>
+      <p>Much of modern entertainment is temporary and surface-level. We seek to create work that carries spiritual weight — content that lingers beyond the screen and continues to resonate within the heart.</p>
     </section>
 
     <section class="card">
-      <h2>What We Create</h2>
-      <p>
-        THE ANCIENT CROSS STV produces:
-      </p>
-      <p>
-        • Original worship songs and gospel compositions<br>
-        • Lyric videos and visual worship experiences<br>
-        • Prophetic and reflective Christian content<br>
-        • Digital media centered on Scripture and spiritual growth
-      </p>
-      <p class="highlight">
-        This is media with eternal purpose — not entertainment without meaning.
-      </p>
+      <h2>Our Creative Focus</h2>
+
+      <p>THE ANCIENT CROSS STV operates at the intersection of worship, theology, reflection, and digital artistry. Our creative process is intentional. It involves prayer, scriptural meditation, lyrical development, visual design, editing discipline, and spiritual discernment.</p>
+
+      <h3>Worship Music</h3>
+      <p>Our original worship compositions are written to express reverence, repentance, surrender, longing, and hope. We aim for lyrical depth rather than repetition for its own sake. Our music often draws language from Scripture while expressing contemporary spiritual burdens and gratitude.</p>
+
+      <h3>Lyric Visuals</h3>
+      <p>Visual storytelling enhances understanding. Through carefully crafted lyric videos and visual worship presentations, we attempt to create a contemplative environment rather than a sensational one. Movement, color, and imagery are chosen to support the message — not overshadow it.</p>
+
+      <h3>Reflective Messages</h3>
+      <p>Some content is meditative in tone — addressing spiritual themes such as perseverance, humility, prayer, eternal perspective, faith during trials, and dependence on God. These messages are designed for thoughtfulness rather than impulsive reaction.</p>
+
+      <h3>Prophetic Sensitivity</h3>
+      <p>While we do not claim prophetic authority over Scripture, we remain sensitive to the spiritual climate of our times. Our content sometimes reflects urgency — encouraging believers to live faithfully in anticipation of Christ’s return.</p>
+    </section>
+
+    <section class="card">
+      <h2>Our Values</h2>
+
+      <h3>Reverence</h3>
+      <p>God’s holiness shapes our tone. We avoid casual treatment of sacred subjects. Reverence does not mean lifelessness — it means awareness of divine majesty.</p>
+
+      <h3>Truthfulness</h3>
+      <p>Integrity matters. We seek alignment between what we proclaim publicly and what we pursue privately. Authentic worship cannot be manufactured.</p>
+
+      <h3>Excellence</h3>
+      <p>Because creativity reflects the image of the Creator, we strive for quality in writing, production, and presentation. Excellence honors God when rooted in humility.</p>
+
+      <h3>Humility</h3>
+      <p>We recognize that spiritual insight is a gift, not an achievement. All credit belongs to God for wisdom, creativity, and opportunity.</p>
+
+      <h3>Consistency</h3>
+      <p>Faithfulness over time builds trust. We aim to remain consistent in message and tone, avoiding unnecessary trend-chasing that dilutes spiritual identity.</p>
     </section>
 
     <section class="card">
       <h2>About the Creator</h2>
-      <p>
-        THE ANCIENT CROSS STV was founded and is managed by <strong>CREATOR KING (Peter Simon)</strong> — a gospel songwriter, worship musician, and digital creator.
-      </p>
-      <p>
-        With a passion for biblical truth and spiritual preparation, the vision behind this platform is to awaken hearts through worship and call believers to steadfast faith as the world moves toward its prophetic fulfillment.
-      </p>
+
+      <p>THE ANCIENT CROSS STV was founded and is directed by <strong>CREATOR KING (Peter Simon)</strong>, a gospel songwriter, worship musician, and digital creator with a heart for biblical truth and spiritual watchfulness.</p>
+
+      <p>The vision behind this platform emerged from a desire to combine worship music with visual communication in a way that preserves theological clarity and spiritual seriousness. Rather than pursuing visibility alone, the focus remains on faithfulness — allowing creative gifts to serve eternal purposes.</p>
+
+      <p>Through songwriting, arrangement, editing, and digital publishing, the creator seeks to produce content that encourages believers to remain steadfast in turbulent times. Each project reflects personal conviction that worship should prepare the heart for eternity.</p>
+
+      <p>This platform is not centered on personality recognition. While leadership responsibility exists, the emphasis remains on the message itself. The Cross is central. The Creator is secondary. Impact belongs to God.</p>
     </section>
 
     <section class="card">
-      <h2>Connect With Us</h2>
-      <p>Watch, listen, share, and subscribe on our official platforms:</p>
+      <h2>Our Theological Foundation</h2>
 
-      <div style="margin-top:16px;">
-        <div style="margin-bottom:12px;">
-          <img src="cross.png" alt="THE ANCIENT CROSS STV Logo" style="width:60px;height:60px;border-radius:12px;object-fit:cover;">
-        </div>
+      <p>Our convictions are rooted in historic Christian belief affirming:</p>
 
-        <div class="subscribe-hint">
-          <span>👇</span>
-          <small>Subscribe on YouTube</small>
-        </div>
+      <p>
+      • The authority of Scripture as God’s inspired revelation.<br>
+      • The holiness and sovereignty of God.<br>
+      • Salvation by grace through faith in Jesus Christ.<br>
+      • The reality of repentance and spiritual transformation.<br>
+      • The importance of perseverance in faith.<br>
+      • The anticipation of Christ’s return.
+      </p>
 
-        <div>
-          <script src="https://apis.google.com/js/platform.js"></script>
-          <div class="g-ytsubscribe"
-               data-channelid="UCb2XY4VNeOAeFJX9P8IF9Cw"
-               data-layout="full"
-               data-count="default">
-          </div>
-        </div>
+      <p>We recognize diversity within Christian traditions; however, our content maintains alignment with core orthodox Christian doctrine regarding the person of Christ and the saving work accomplished through His sacrificial death and resurrection.</p>
+    </section>
 
-        <div class="links" style="margin-top:18px;">
-          <a href="https://www.facebook.com/profile.php?id=100070492584961" target="_blank">Facebook</a>
-          <a href="https://www.tiktok.com/@theancientcross?_r=1&_t=ZS-94BlIClqw5P" target="_blank">TikTok</a>
-          <a href="index.html">Home</a>
-        </div>
+    <section class="card">
+      <h2>Why Digital Media Matters</h2>
+
+      <p>We live in a time when screens shape daily experience. Attention spans are fragmented. Ideas spread rapidly. Cultural narratives shift quickly. For this reason, digital faithfulness becomes crucial. Media can either cloud conviction or clarify it.</p>
+
+      <p>By entering this space intentionally, we believe it is possible to use modern tools to communicate ancient truths. Technology is not the enemy of faith — but it must be governed by conviction.</p>
+
+      <p>Rather than abandoning digital platforms to superficial content alone, THE ANCIENT CROSS STV seeks to occupy space with thoughtful, reverent, biblically grounded creative work.</p>
+    </section>
+
+    <section class="card">
+      <h2>Community and Connection</h2>
+
+      <p>Though we are a digital platform, we value genuine spiritual community. We encourage followers to remain actively involved in local fellowship, discipleship, and accountability within their own church communities.</p>
+
+      <p>Our platform does not replace pastoral care or congregational life. Instead, it aims to supplement personal devotion and encourage deeper engagement with Scripture.</p>
+
+      <p>We welcome respectful dialogue, thoughtful questions, and shared encouragement. Unity in truth strengthens believers across geographical boundaries.</p>
+
+      <div class="links">
+        <a href="https://www.facebook.com/profile.php?id=100070492584961" target="_blank">Facebook</a>
+        <a href="https://www.tiktok.com/@theancientcross?_r=1&_t=ZS-94BlIClqw5P" target="_blank">TikTok</a>
+        <a href="index.html">Home</a>
       </div>
+    </section>
+
+    <section class="card">
+      <h2>Our Ongoing Commitment</h2>
+
+      <p>As long as God grants opportunity and strength, THE ANCIENT CROSS STV will continue striving to create worship music and visual content that magnifies Christ and calls hearts to faithfulness. Our commitment is long-term. It is not driven by trends but by conviction.</p>
+
+      <p>We believe that seeds planted through faithful media may bear fruit in unseen ways. Not every impact is visible. Not every response is measurable. Nevertheless, obedience matters.</p>
+
+      <p>If our content strengthens even one believer toward deeper devotion, encourages repentance in one searching heart, or inspires renewed spiritual focus in one weary soul, then the labor is worthwhile.</p>
+
+      <p class="highlight">Soli Deo Gloria — To God alone be the glory.</p>
     </section>
 
     <footer>
