@@ -1,1 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — THE ANCIENT CROSS STV</title>
+  <meta name="description" content="About THE ANCIENT CROSS STV — a Christian media platform producing prophetic worship music and visual content." />  
 
+  <style>
+    /* Finger animation */
+.subscribe-hint{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.subscribe-hint span{
+  font-size:32px;
+  animation: pointDown 1.4s infinite ease-in-out;
+}
+
+.subscribe-hint small{
+  margin-top:6px;
+  color:var(--accent);
+  font-weight:600;
+  letter-spacing:0.3px;
+}
+
+/* Animation keyframes */
+@keyframes pointDown{
+  0%{ transform: translateY(0); opacity:0.6; }
+  50%{ transform: translateY(8px); opacity:1; }
+  100%{ transform: translateY(0); opacity:0.6; }
+}
+    :root{
+      --blue:#0b3c7a;
+      --blue-dark:#072a55;
+      --accent:#f2c94c;
+      --text:#eef4ff;
+      --muted:#c7d6ee;
+      --card-bg: rgba(255,255,255,0.06);
+      --shadow: rgba(0,0,0,0.4);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--blue) 0%, var(--blue-dark) 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .container{
+      max-width:900px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+    }
+
+    .logo{
+      width:72px;
+      height:72px;
+      border-radius:14px;
+      background:#ffffff10;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    h1{
+      margin:0;
+      font-size:26px;
+      letter-spacing:0.3px;
+    }
+
+    .subtitle{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border-radius:14px;
+      padding:22px;
+      margin-bottom:20px;
+      box-shadow:0 6px 16px var(--shadow);
+      text-align:center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover{
+      transform: translateY(-3px);
+    }
+
+    h2{
+      margin-top:0;
+      font-size:22px;
+      color:#ffffff;
+    }
+
+    p{
+      margin:10px 0;
+    }
+
+    .highlight{
+      color:var(--accent);
+      font-weight:600;
+    }
+
+    .links a{
+      display:inline-block;
+      margin-right:14px;
+      margin-top:8px;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .links a:hover{
+      text-decoration:underline;
+    }
+
+    footer{
+      margin-top:40px;
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    @media(max-width:600px){
+      header{flex-direction:column;align-items:flex-start}
+      .logo{width:64px;height:64px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="cross.png" alt="THE ANCIENT CROSS STV Logo" style="width:100%;height:100%;border-radius:14px;object-fit:cover;">
+      </div>
+      <div>
+        <h1>THE ANCIENT CROSS STV</h1>
+        <div class="subtitle">Christian media • worship music • visual storytelling</div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Who We Are</h2>
+      <p>
+        <strong>THE ANCIENT CROSS STV</strong> is a <span class="highlight">Christian media platform</span>,
+        not a church or a ministry. We focus on producing and sharing prophetic worship music,
+        gospel videos, and visual messages that point people back to Christ.
+      </p>
+      <p>
+        Our content is created to <strong>encourage reflection, repentance, hope, and readiness</strong>
+        for the coming of the Messiah through music and inspired storytelling.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What We Do</h2>
+      <p>
+        • Produce original worship songs and gospel music videos<br>
+        • Share prophetic and reflective Christian messages<br>
+        • Use media, sound, and visuals to communicate biblical truth<br>
+        • Publish content on YouTube and digital platforms
+      </p>
+      <p class="highlight">
+        This is media with a message — not entertainment without purpose.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>About the Creator</h2>
+      <p>
+        THE ANCIENT CROSS STV is created and managed by <strong>CREATOR KING</strong>
+        (Peter Simon), a gospel songwriter, worship musician, and digital creator.
+      </p>
+      <p>
+        Through music and media, the channel calls believers to watchfulness and faithfulness
+        as the world approaches the final days.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Connect With Us</h2>
+      <p>Watch, listen, like, share, and subscribe on our official platforms:</p>
+
+      <div style="margin-top:16px;">
+        <div style="margin-bottom:12px;">
+          <img src="cross.png" alt="THE ANCIENT CROSS STV Logo" style="width:60px;height:60px;border-radius:12px;object-fit:cover;">
+        </div>
+
+<div class="subscribe-hint">
+  <span>👇</span>
+  <small>Subscribe on YouTube</small>
+</div>
+
+        <div>
+          <script src="https://apis.google.com/js/platform.js"></script>
+          <div class="g-ytsubscribe"
+               data-channelid="UCb2XY4VNeOAeFJX9P8IF9Cw"
+               data-layout="full"
+               data-count="default">
+          </div>
+        </div>
+
+        <div class="links" style="margin-top:16px;">
+          <a href="https://www.facebook.com/profile.php?id=100070492584961" target="_blank">Facebook</a>
+          <a href="https://www.tiktok.com/@theancientcross?_r=1&_t=ZS-94BlIClqw5P" target="_blank">TikTok</a>
+          <a href="index.html">Home</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 THE ANCIENT CROSS STV • All rights reserved
+    </footer>
+  </div>
+</body>
+      </html>
