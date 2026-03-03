@@ -32,7 +32,6 @@ h1{
   letter-spacing:1px;
 }
 
-/* ===== GROUP BUTTONS (Magazine Cards) ===== */
 #groups{
   display:flex;
   flex-wrap:wrap;
@@ -57,7 +56,6 @@ h1{
   color:var(--accent);
 }
 
-/* ===== IMAGES GRID ===== */
 #images{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
@@ -79,7 +77,6 @@ h1{
   transform:scale(1.04);
 }
 
-/* ===== FULLSCREEN VIEW ===== */
 #fullscreen{
   display:none;
   position:fixed;
@@ -97,7 +94,6 @@ h1{
   border-radius:16px;
   box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
-
 </style>
 </head>
 <body>
@@ -120,6 +116,41 @@ const imagesDiv = document.getElementById('images');
 const fsImg = document.getElementById('fsImg');
 const fullscreen = document.getElementById('fullscreen');
 
+/* ===== URL CONVERTER FUNCTION ===== */
+function convertImageUrl(url){
+
+  if(!url) return '';
+
+  url = url.trim();
+
+  // === GOOGLE DRIVE CONVERTER ===
+  if(url.includes("drive.google.com")){
+    
+    // Format: /file/d/FILE_ID/view
+    const fileMatch = url.match(/\/file\/d\/(.*?)\//);
+    if(fileMatch && fileMatch[1]){
+      return `https://drive.google.com/thumbnail?id=${fileMatch[1]}&sz=w1000`;
+    }
+
+    // Format: id=FILE_ID
+    const idMatch = url.match(/id=([^&]+)/);
+    if(idMatch && idMatch[1]){
+      return `https://drive.google.com/thumbnail?id=${idMatch[1]}&sz=w1000`;
+    }
+  }
+
+  // === IMGUR AUTO FIX (.png missing) ===
+  if(url.includes("imgur.com") && !url.match(/\.(jpg|jpeg|png|webp)$/i)){
+    return url + ".jpg";
+  }
+
+  // === FACEBOOK WARNING ===
+  // Only direct CDN images work
+  // scontent.xx.fbcdn.net links will pass normally
+
+  return url;
+}
+
 fetch(`https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json&sheet=${sheetName}`)
   .then(res => res.text())
   .then(data => {
@@ -131,7 +162,7 @@ fetch(`https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json&sh
       if (!groupName) return;
 
       const imageUrls = row.c.slice(1)
-        .map(cell => cell?.v)
+        .map(cell => convertImageUrl(cell?.v))
         .filter(url => url && url.trim() !== '');
 
       if(imageUrls.length){
